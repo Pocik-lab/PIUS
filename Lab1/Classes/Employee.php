@@ -38,7 +38,7 @@ class Employee
     private string $startWorkDate;
 
     //getter id
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -50,7 +50,7 @@ class Employee
     }
 
     //getter name
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -62,7 +62,7 @@ class Employee
     }
 
     //getter salary
-    public function getSalary() : int
+    public function getSalary(): int
     {
         return $this->salary;
     }
@@ -74,7 +74,7 @@ class Employee
     }
 
     //getter startWorkDate
-    public function getStartWorkDate() : string
+    public function getStartWorkDate(): string
     {
         return $this->startWorkDate;
     }
@@ -94,11 +94,10 @@ class Employee
         $this->startWorkDate = $date;
     }
 
-    public function getExperience() : int
+    public function getExperience(): int
     {
         $todayYear = (int)date('Y');
         $startYear = (int)date('Y', strtotime($this->startWorkDate));
         return $todayYear - $startYear;
     }
 }
-?>

@@ -22,7 +22,7 @@ class Department
     private string $name;
 
     //getter array
-    public function getEmployArr() : array
+    public function getEmployArr(): array
     {
         return $this->employArr;
     }
@@ -34,7 +34,7 @@ class Department
     }
 
     //getter name
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -53,14 +53,12 @@ class Department
     }
 
     //подсчет суммарной зарплаты всех работников департамента
-    public function getEmploySumSalary() : int
+    public function getEmploySumSalary(): int
     {
         $tmpSum = 0;
         foreach ($employArr as $employee) {
-          $tmpSum += $employee->getSalary();
+            $tmpSum += $employee->getSalary();
         }
         return $tmpSum;
     }
 }
-
-?>
