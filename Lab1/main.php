@@ -6,6 +6,32 @@ use Symfony\Component\Validator\Validation;
 use App\Employee as Employee;
 use App\Department as Department;
 
+echo"-----Task 2.1-----\n";
+$validator = Validation::createValidatorBuilder()
+    ->enableAnnotationMapping()
+    ->addDefaultDoctrineAnnotationReader()
+    ->getValidator();
+echo"\nДемонстрация работы валидатора на полностью неправильном объекте\n\n";
+$object1 = new Employee(-1, "", -20, 20);
+$errors = $validator->validate($object1);
+
+if (count($errors) > 0) {
+    $errorString = (string) $errors;
+
+    echo $errorString;
+}
+echo"\nДемонстрация работы валидатора на полностью правильном объекте\n\n";
+$object2 = new Employee(1, "Александр", 2000, "2020-01-01");
+echo $object2->getExperience();
+$errors = $validator->validate($object2);
+
+if (count($errors) > 0) {
+    $errorString = (string) $errors;
+
+    echo $errorString;
+}
+
+echo"\n-----Task 2.2-----\n";
 $departmentArray = array();
 $departNames = array("Miet", "Yandex", "Sber", "VTB", "Apple", "Google");
 
@@ -23,7 +49,7 @@ $maxSalary = -1;
 
 foreach ($departmentArray as $depart) {
     $tmpSum = $depart->getEmploySumSalary();
-    echo $tmpSum."\n";
+    echo "Sum of department - ".$depart->getName()." = ".$tmpSum."\n";
     if ($tmpSum <= $minSalary) {
         $minSalary = $tmpSum;
     }
@@ -90,19 +116,4 @@ if (count($depMaxSal) > 1) {
             echo 'Департамент с наиб. суммой зарплаты = '.$maxSalary.' и равным кол-вом сотрудников =  '.count($depart->getEmployArr()).' - '.$depart->getName()."\n";
         }
     }
-}
-
-$validator = Validation::createValidatorBuilder()
-    ->enableAnnotationMapping()
-    ->addDefaultDoctrineAnnotationReader()
-    ->getValidator();
-
-//Демонстрация работы валидатора
-$object1 = new Employee(-1, "", -20, 20);
-$errors = $validator->validate($object1);
-
-if (count($errors) > 0) {
-    $errorString = (string) $errors;
-
-    echo $errorString;
 }
