@@ -1,0 +1,21 @@
+{
+    "name": "pocik-lab/pius",
+    "description": "PIUS first lab",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Alex Tegin",
+        "email": "tegin2011@yandex.ru"
+      }
+    ],
+    "require": {
+        "symfony/validator": "^6.0",
+        "symfony/cache": "^6.0",
+        "doctrine/annotations": "^1.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\":"Classes/"
+        }
+    }
+}
